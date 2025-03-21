@@ -1,0 +1,35 @@
+*
+{
+     margin: 0;
+}
+body
+{
+     text-align: center;
+}
+.container
+{
+     margin: 0 auto;
+     width: 1000px;
+     height: 100vh;
+     background-color: lightgrey;
+}
+div
+{
+     margin: 0 auto;
+     margin-top: 20px;
+     border: 5px solid green; 
+}
+th,td 
+{
+     width: 100px;
+     border: 1px solid black;
+}
+table
+{
+     margin: 0 auto;
+     border-collapse: collapse;
+}
+.max
+{
+     background-color: green;
+}
