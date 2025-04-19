@@ -6,6 +6,7 @@
 3. Laravel Herd
 4. Inertia.js (some sweat tool when creating SPA as I understood)
 5. Vite advanced use (wow theres a lot of text -_-)
+6. Laravel Sail
 
 # BASICS
 1. Routing (API Advanced, Broadcasting, Console)
