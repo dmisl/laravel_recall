@@ -7,6 +7,8 @@
 4. Inertia.js (some sweat tool when creating SPA as I understood)
 5. Vite advanced use (wow theres a lot of text -_-)
 6. Laravel Sail
+7. Laravel Telescope
+8. Custom commands with arguments
 
 # BASICS
 1. Routing (API Advanced, Broadcasting, Console)
