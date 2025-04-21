@@ -9,6 +9,21 @@
 6. Laravel Sail
 7. Laravel Telescope
 8. Custom commands with arguments
+9. Support and Services
+10. Laravel Reverb, Pusher Channels, Ably
+11. Laravel Horizon
+12. AWS FULL
+
+# QUEUE
+1. Database
+2. Redis
+3. Beanstalkd
+4. SQS
+5. RabbitMQ
+6. MongoDB
+
+1. Stub customization
+2. Blocking and Redis cluster
 
 # BASICS
 1. Routing (API Advanced, Broadcasting, Console)
