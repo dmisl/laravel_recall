@@ -13,6 +13,9 @@
 10. Laravel Reverb, Pusher Channels, Ably
 11. Laravel Horizon
 12. AWS FULL
+13. bindMethod in AppServiceProvider (with ProcessPodcast)
+14. try raw data, images etc
+15. See the difference between relationships in model and without
 
 # QUEUE
 1. Database
