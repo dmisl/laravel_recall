@@ -10,7 +10,6 @@ class AuthController extends Controller
 {
     public function index()
     {
-        phpinfo();
         return view('login');
     }
     public function store(Request $request)
@@ -19,8 +18,6 @@ class AuthController extends Controller
             'name' => ['string', 'min:3', 'exists:users,name'],
             'password' => ['string', 'min:6'],
         ]);
-
-        dd($request->all());
 
         if(Auth::attempt(['name' => $request->name, 'password' => $request->password]))
         {
