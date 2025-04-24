@@ -4,7 +4,10 @@
 
 <div class="w-full h-screen flex justify-center items-center">
 
-    <form method="POST" class="w-[500px] h-[400px] rounded-[20px] border border-black-500 bg-white">
+    <form action="{{ route('login.store') }}" method="POST" class="w-[500px] h-[400px] rounded-[20px] border border-black-500 bg-white">
+
+        @csrf
+
          <div class="p-[20px] w-full h-full text-center flex flex-col items-center">
               <h1 class="text-[40px]">Sing in bruh</h1>
 
@@ -14,9 +17,9 @@
               <label for="password" class="text-left text-[25px] w-90 ml-[20px] mt-3">password</label>
               <input name="password" id="password" class="border border-black rounded-[10px] w-90 py-[5px] px-[10px]" type="password">
 
-              <button class="mt-10 text-[20px] rounded-[30px] border border-black bg-blue-700 text-white px-[40px] py-[5px] pt-[2px]">log in</button>
+              <button type="submit" role="button" class="mt-10 text-[20px] rounded-[30px] border border-black bg-blue-700 text-white px-[40px] py-[5px] pt-[2px]">log in</button>
 
-              <a href="{{ route('restore') }}" class="text-blue-800 underline mt-2">forgot the password?</a>
+              <a href="{{ route('reset.index') }}" class="text-blue-800 underline mt-2">forgot the password?</a>
 
          </div>
     </form>
