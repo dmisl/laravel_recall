@@ -9,7 +9,7 @@
      @vite(['resources/css/global.css'])
      @yield('styles')
 </head>
-<body>
+<body class="flex flex-col h-screen">
      
      <header>
           <h1 class="logotype">Laravel Recall</h1>
@@ -20,7 +20,9 @@
           </div>
      </header>
 
-     @yield('content')
+     <div class="flex-grow">
+          @yield('content')
+     </div>
 
 </body>
 </html>
