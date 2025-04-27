@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
+
+    /**
+     * Service handling user management logic.
+     * 
+     * @var UserService
+     */
     protected UserService $userService;
 
     public function __construct(UserService $userService)
@@ -15,6 +21,10 @@ class RegisterController extends Controller
         $this->userService = $userService;
     }
 
+    /**
+     * Handles request sent from register form, validates incoming data,
+     * and calls UserService to create new user.
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -23,13 +33,7 @@ class RegisterController extends Controller
             'password' => ['required', 'confirmed', 'min:6'],
         ]);
         
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password
-        ]);
-
-        $user->sendEmailVerificationNotification();
+        $this->userService->create($request->all());
 
         return redirect()->route('profile.index');
 

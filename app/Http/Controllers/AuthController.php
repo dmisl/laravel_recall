@@ -44,9 +44,14 @@ class AuthController extends Controller
             'password' => ['string', 'min:6'],
         ]);
 
-        $this->authService->attemptLogin($request->all());
+        if($this->authService->attemptLogin($request->all()))
+        {
+            redirect()->route('profile.index');
+        } else
+        {
+            return back();
+        }
 
-        return back();
     }
 
     /**
