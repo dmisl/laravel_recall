@@ -3,15 +3,40 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\AuthService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
+    /**
+     * Service handling authentication logic.
+     *
+     * @var AuthService
+     */
+    protected AuthService $authService;
+
+    public function __construct(AuthService $authService)
+    {
+        $this->authService = $authService;
+    }
+
+    /**
+     * Returns view with sign in/up form
+     */
     public function index()
     {
         return view('login');
     }
+
+    /**
+     * Handles request sent from login form, validates incoming data,
+     * and calls AuthService to try authenticate the user.
+     * 
+     * @param Request $request Incoming request containing login credentials.
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -19,17 +44,19 @@ class AuthController extends Controller
             'password' => ['string', 'min:6'],
         ]);
 
-        if(Auth::attempt(['name' => $request->name, 'password' => $request->password]))
-        {
-            return redirect()->route('profile.index');
-        }
+        $this->authService->attemptLogin($request->all());
 
         return back();
-
     }
+
+    /**
+     * Logs out authenticated user
+     * 
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout()
     {
-        Auth::logout();
+        $this->authService->logout();
         return redirect()->route('login.index');
     }
 }

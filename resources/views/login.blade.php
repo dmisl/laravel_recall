@@ -42,7 +42,7 @@
                 <input name="name" id="reg_name" class="border border-black rounded-[10px] w-90 py-[5px] px-[10px]" type="text">
 
                 <label for="reg_email" class="text-left text-[25px] w-90 ml-[20px] mt-1">email</label>
-                <input name="name" id="reg_email" class="border border-black rounded-[10px] w-90 py-[5px] px-[10px]" type="email">
+                <input name="email" id="reg_email" class="border border-black rounded-[10px] w-90 py-[5px] px-[10px]" type="email">
 
                 <label for="reg_password" class="text-left text-[25px] w-90 ml-[20px] mt-1">password</label>
                 <input name="password" id="reg_password" class="border border-black rounded-[10px] w-90 py-[5px] px-[10px]" type="password">
