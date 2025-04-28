@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'mail_verified' => \App\Http\Middleware\MailVerified::class,
+            'authenticated' => \App\Http\Middleware\Authenticated::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

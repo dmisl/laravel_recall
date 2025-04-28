@@ -46,7 +46,7 @@ class AuthController extends Controller
 
         if($this->authService->attemptLogin($request->all()))
         {
-            redirect()->route('profile.index');
+            return redirect()->route('profile.index');
         } else
         {
             return back();

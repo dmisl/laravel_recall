@@ -25,7 +25,7 @@ class AuthService
      * @param array $data The user credentials (name and password).
      * @return bool
      */
-    public function attemptLogin(array $data)
+    public function attemptLogin(array $data) : bool
     {
         if(Auth::attempt(['name' => $data['name'], 'password' => $data['password']]))
         {
