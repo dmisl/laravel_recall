@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerifyController;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,14 @@ Route::middleware(['guest'])->group(function () {
 
 });
 
-Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware(['authenticated']);
+Route::middleware(['authenticated'])->group(function () {
+    
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('verify', [VerifyController::class, 'index'])->name('verify.index');
+    Route::post('verify', [VerifyController::class, 'store'])->name('verify.store');
+
+});
 
 Route::middleware(['mail_verified'])->group(function () {
     

@@ -14,9 +14,11 @@
      <header>
           <h1 class="logotype">Laravel Recall</h1>
           <div class="menu">
-               <a href="{{ route('logout') }}" class="menu-element">
-                    Log out   
-               </a>
+               @if(Auth::check())
+                    <a href="{{ route('logout') }}" class="menu-element">
+                         Log out
+                    </a>
+               @endif
           </div>
      </header>
 
