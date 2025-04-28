@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 class AuthService
 {
 
+    /**
+     * Logins user using sent User model
+     * 
+     * @return null
+     */
     public function login(User $user)
     {
         Auth::login($user);
