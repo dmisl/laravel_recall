@@ -18,13 +18,10 @@ class MailVerified
     {
         if(Auth::check())
         {
-            // if(Auth::user()->email_verified_at != null)
-            // {
-            //     dd('sup mane');
-            // } else
-            // {
-            //     dd('not sup mane');
-            // }
+            if(!Auth::user()->email_verified_at != null)
+            {
+                return redirect()->route('verify.index');
+            }
         } else
         {
             return redirect()->route('login.index');
