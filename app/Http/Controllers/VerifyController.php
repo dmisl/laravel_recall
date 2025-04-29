@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Services\MailService;
+use App\Services\UserService;
 use App\Services\VerifyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,10 +14,12 @@ class VerifyController extends Controller
 {
 
     protected VerifyService $verifyService;
+    protected User $user;
 
-    public function __construct(VerifyService $verifyService)
+    public function __construct(VerifyService $verifyService, UserService $userService)
     {
         $this->verifyService = $verifyService;
+        $this->user = Auth::user();
     }
 
     /**
@@ -23,7 +27,7 @@ class VerifyController extends Controller
      */
     public function index()
     {
-        $this->verifyService->sendVerificationCode();
+        $this->verifyService->sendVerificationCode($this->user);
 
         return view('verify');
     }
@@ -42,7 +46,7 @@ class VerifyController extends Controller
             'verificationCode' => ['required', 'digits:6']
         ]);
 
-        if($this->verifyService->checkVerificationCode($request->verificationCode))
+        if($this->verifyService->checkVerificationCode($this->user, $request->verificationCode))
         {
             return redirect()->route('profile.index');
         }

@@ -25,11 +25,32 @@ class UserService
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => $data['password']
+            'password' => $data['password'],
+            'email_verified_at' => null,
         ]);
 
         $this->authService->login($user);
 
         return $user;
     }
+
+    public function markEmailAsVerified(User $user)
+    {
+        if(!$this->isEmailVerified($user))
+        {
+            $user->update([
+                'email_verified_at' => now()
+            ]);
+        }
+    }
+
+    public function isEmailVerified(User $user)
+    {
+        if($user->email_verified_at !== null)
+        {
+            return true;
+        }
+        return false;
+    }
+
 }

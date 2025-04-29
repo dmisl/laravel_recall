@@ -17,6 +17,7 @@
  14. try raw data, images etc
  15. See the difference between relationships in model and without
  16. Email-verification code exipiring in 10 mins
+ 17. Why global facades sometimes should be skipped in using in services becouse of future problems with mocking and testing
  
  # QUEUE
  1. Database
