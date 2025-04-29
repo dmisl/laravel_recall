@@ -16,7 +16,7 @@
  13. bindMethod in AppServiceProvider (with ProcessPodcast)
  14. try raw data, images etc
  15. See the difference between relationships in model and without
- 16. a
+ 16. Email-verification code exipiring in 10 mins
  
  # QUEUE
  1. Database
