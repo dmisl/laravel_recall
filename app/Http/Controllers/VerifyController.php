@@ -27,6 +27,15 @@ class VerifyController extends Controller
 
         return view('verify');
     }
+
+    /**
+     * Handles request sent from verification form,
+     * checks if verification code sent to user`s email address match filled in input.
+     * If verification codes match up - updates User model and redirects to the profile route.
+     * 
+     * @param Request $request Incoming request containing login credentials.
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $request->validate([
