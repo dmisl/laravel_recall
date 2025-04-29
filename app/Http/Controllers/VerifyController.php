@@ -12,8 +12,6 @@ class VerifyController extends Controller
      */
     public function index()
     {
-        Redis::set('key', 'value');
-        
         return view('verify');
     }
     public function store(Request $request)
