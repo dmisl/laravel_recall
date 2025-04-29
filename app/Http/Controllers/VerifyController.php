@@ -8,7 +8,7 @@ class VerifyController extends Controller
 {
     public function index()
     {
-
+        return view('verify');
     }
     public function store(Request $request)
     {
