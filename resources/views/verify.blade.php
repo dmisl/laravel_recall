@@ -14,12 +14,11 @@
 
                <div class="border border-green-400 bg-green-300 text-green-800 py-[10px] rounded-[10px] mt-[5px] w-[450px]">A verification code has been sent to your email address.<br>Please enter the code in the input field below to continue.</div>
           
-               <input class="text-center border rounded-[10px] text-[25px] mt-[20px] w-[300px]" type="text" placeholder="XXX-XXX">
+               <input class="text-center border rounded-[10px] text-[25px] mt-[20px] w-[300px]" name="verificationCode" type="text" placeholder="XXX-XXX">
 
                <button class="text-white cursor-pointer bg-blue-600 mt-[40px] px-[40px] rounded-[10px] py-[5px] text-[20px]" type="submit">Submit</button>
 
           </form>
-
 
      </div>
 

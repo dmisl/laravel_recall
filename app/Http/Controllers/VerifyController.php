@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\MailService;
+use App\Services\VerifyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
@@ -10,11 +11,11 @@ use Illuminate\Support\Facades\Redis;
 class VerifyController extends Controller
 {
 
-    protected MailService $mailService;
+    protected VerifyService $verifyService;
 
-    public function __construct(MailService $mailService)
+    public function __construct(VerifyService $verifyService)
     {
-        $this->mailService = $mailService;
+        $this->verifyService = $verifyService;
     }
 
     /**
@@ -22,12 +23,22 @@ class VerifyController extends Controller
      */
     public function index()
     {
-        $this->mailService->sendVerificationCode(Auth::user()->email);
+        $this->verifyService->sendVerificationCode();
 
         return view('verify');
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'verificationCode' => ['required', 'digits:6']
+        ]);
+
+        if($this->verifyService->checkVerificationCode($request->verificationCode))
+        {
+            return redirect()->route('profile.index');
+        }
+
+        return back();
         
     }
 }
