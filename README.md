@@ -18,6 +18,10 @@
  15. See the difference between relationships in model and without
  16. Email-verification code exipiring in 10 mins
  17. Why global facades sometimes should be skipped in using in services becouse of future problems with mocking and testing
+ 18. Stub customization
+ 19. Blocking and Redis cluster
+ 20. Responses
+ 21. Responses and file downloading
  
  # QUEUE
  1. Database
@@ -26,9 +30,6 @@
  4. SQS
  5. RabbitMQ
  6. MongoDB
- 
- 1. Stub customization
- 2. Blocking and Redis cluster
  
  # BASICS
  1. Routing (API Advanced, Broadcasting, Console)
