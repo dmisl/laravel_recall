@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\VerificationCodeSender;
 use App\Mail\VerificationCodeMail;
 use App\Models\User;
 use Illuminate\Mail\Mailable;
@@ -18,6 +19,14 @@ class VerifyService
     {
         $this->mailService = $mailService;
         $this->userService = $userService;
+    }
+
+    public function sendVerificationCodeIfNeeded(User $user)
+    {
+        if(Redis::get('verification_code:'.$user->email) == null)
+        {
+            VerificationCodeSender::dispatch($user);
+        }
     }
 
     public function sendVerificationCode(User $user)

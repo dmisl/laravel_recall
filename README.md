@@ -22,6 +22,7 @@
  19. Blocking and Redis cluster
  20. Responses
  21. Responses and file downloading
+ 22. lets not forget bout logging
  
  # QUEUE
  1. Database

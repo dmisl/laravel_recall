@@ -18,7 +18,7 @@ class MailVerified
     {
         if(Auth::check())
         {
-            if(!Auth::user()->email_verified_at != null)
+            if(Auth::user()->email_verified_at == null)
             {
                 return redirect()->route('verify.index');
             }
