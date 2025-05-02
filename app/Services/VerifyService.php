@@ -33,7 +33,7 @@ class VerifyService
     {
         $verificationCode = $this->generateVerificationCode();
 
-        Redis::set('verification_code:'.$user->email, $verificationCode);
+        Redis::setex('verification_code:'.$user->email, $verificationCode, 600);
 
         $this->mailService->send(VerificationCodeMail::class, $user->email, $verificationCode);
     }

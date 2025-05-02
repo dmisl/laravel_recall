@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserVerified;
 use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class AuthController extends Controller
      */
     public function index()
     {
+        UserVerified::dispatch(User::find(5));
         return view('login');
     }
 

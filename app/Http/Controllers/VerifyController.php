@@ -28,7 +28,7 @@ class VerifyController extends Controller
     public function index()
     {
         $this->verifyService->sendVerificationCodeIfNeeded($this->user);
-
+        
         return view('verify');
     }
 
