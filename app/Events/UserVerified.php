@@ -16,11 +16,8 @@ class UserVerified
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public User $user;
-
-    public function __construct(User $user) {
+    public function __construct(public User $user) {
         $this->user = $user;
-        Log::info("User verified {$this->user->name}");
     }
 
     /**

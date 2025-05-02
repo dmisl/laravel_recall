@@ -22,6 +22,6 @@ class SendWelcomingEmail implements ShouldQueue
      */
     public function handle(UserVerified $event): void
     {
-        
+        Log::info("User verified {$event->user->name}");
     }
 }

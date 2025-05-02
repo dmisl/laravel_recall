@@ -39,7 +39,7 @@ class VerificationCodeMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'verification_view',
+            view: 'mail.verification',
             with: [
                 'verificationCode' => $this->verificationCode
             ]
