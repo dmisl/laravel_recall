@@ -28,7 +28,6 @@ class AuthController extends Controller
      */
     public function index()
     {
-        UserVerified::dispatch(User::find(5));
         return view('login');
     }
 

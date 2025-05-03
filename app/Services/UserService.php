@@ -34,6 +34,11 @@ class UserService
         return $user;
     }
 
+    public function setDefaultRole(User $user)
+    {
+        $user->update(['role' => 'default']);
+    }
+
     public function markEmailAsVerified(User $user)
     {
         if(!$this->isEmailVerified($user))
