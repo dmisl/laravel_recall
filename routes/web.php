@@ -37,5 +37,5 @@ Route::middleware(['mail_verified'])->group(function () {
 
 
 Route::fallback(function () {
-    return redirect()->route('login.index');
+    return redirect()->route('profile.index');
 });

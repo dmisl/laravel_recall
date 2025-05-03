@@ -3,18 +3,19 @@
 namespace App\Listeners;
 
 use App\Events\UserVerified;
+use App\Mail\WelcomeMail;
+use App\Services\MailService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
 
 class SendWelcomingEmail implements ShouldQueue
 {
-    /**
-     * Create the event listener.
-     */
-    public function __construct()
+    protected MailService $mailService;
+
+    public function __construct(MailService $mailService)
     {
-        //
+        $this->mailService = $mailService;
     }
 
     /**
@@ -22,6 +23,6 @@ class SendWelcomingEmail implements ShouldQueue
      */
     public function handle(UserVerified $event): void
     {
-        Log::info("User verified {$event->user->name}");
+        $this->mailService->send(WelcomeMail::class, $event->user->email, [$event->user->name, route('profile.index')]);
     }
 }

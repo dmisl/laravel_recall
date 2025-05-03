@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\UserVerified;
 use App\Jobs\VerificationCodeSender;
 use App\Mail\VerificationCodeMail;
 use App\Models\User;
@@ -33,9 +34,9 @@ class VerifyService
     {
         $verificationCode = $this->generateVerificationCode();
 
-        Redis::setex('verification_code:'.$user->email, $verificationCode, 600);
-
         $this->mailService->send(VerificationCodeMail::class, $user->email, $verificationCode);
+
+        Redis::setex('verification_code:'.$user->email, 600, $verificationCode);
     }
 
     public function checkVerificationCode(User $user, $verificationCode)
@@ -43,6 +44,7 @@ class VerifyService
         if(Redis::get('verification_code:'.$user->email) == $verificationCode)
         {
             $this->userService->markEmailAsVerified($user);
+            UserVerified::dispatch($user);
             return true;
         }
         return false;

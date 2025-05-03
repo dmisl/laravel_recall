@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VerificationCodeMail;
 use App\Models\User;
 use App\Services\MailService;
 use App\Services\UserService;
@@ -15,11 +16,13 @@ class VerifyController extends Controller
 
     protected VerifyService $verifyService;
     protected User $user;
+    protected MailService $mailService;
 
-    public function __construct(VerifyService $verifyService, UserService $userService)
+    public function __construct(VerifyService $verifyService, UserService $userService, MailService $mailService)
     {
         $this->verifyService = $verifyService;
         $this->user = Auth::user();
+        $this->mailService = $mailService;
     }
 
     /**
@@ -28,7 +31,7 @@ class VerifyController extends Controller
     public function index()
     {
         $this->verifyService->sendVerificationCodeIfNeeded($this->user);
-        
+
         return view('verify');
     }
 
