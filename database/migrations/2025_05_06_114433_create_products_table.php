@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->decimal('price', 8, 2);
             $table->text('description')->nullable()->default(null);
-            $table->string('image')->nullable()->default(null);
+            $table->json('images')->nullable()->default(null);
             $table->string('category');
         });
     }
