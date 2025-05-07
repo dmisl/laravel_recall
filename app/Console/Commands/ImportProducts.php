@@ -20,7 +20,7 @@ class ImportProducts extends Command
             $products = $response->json('products');
 
             foreach ($products as $item) {
-                Product::updateOrCreate(
+                Product::create(
                     [
                         'title' => $item['title'],
                         'description' => $item['description'],

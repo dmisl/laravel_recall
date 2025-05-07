@@ -8,4 +8,10 @@
 
 @section('content')
 
+     @foreach ($products as $product)
+          <div>
+               <h1>{{ $product->title }}</h1>
+          </div>
+     @endforeach
+
 @endsection
